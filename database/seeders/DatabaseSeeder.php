@@ -12,13 +12,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         FabricType::factory()
-            ->count(4)
+            ->count(2)
             ->has(
                 FabricVariant::factory()
                     ->count(3)
                     ->has(
                         Product::factory()
-                            ->count(10)
+                            ->count(4)
                     )
             )
             ->create();

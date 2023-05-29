@@ -39,7 +39,11 @@
             <a href="{{ route('products.show', $product->id) }}" class="text-decoration-none text-dark">
                 <div class="card">
                     <!-- Here is your requested change -->
-                    <img src="{{ $product->image }}" alt="{{ $product->color }}" style="width: 100%; height: auto;">
+                    @if(strpos($product->image, 'http') !== false)
+                    <img src="{{ $product->image }}" alt="{{ $product->name }}"  class="img-fluid" style="object-fit: cover; height: 100%;">
+                @else
+                    <img src="{{ asset('storage/ProductImage/'.$product->image) }}" alt="{{ $product->name }}"  class="img-fluid" style="object-fit: cover; height: 100%;">
+                @endif
                     <div class="card-body">
                         <!-- Display the product name -->
                         <h5 class="card-title">{{ $product->name }}</h5>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('/admin/payments', [\App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('admin.payments.index');
     Route::get('/admin/customers', [\App\Http\Controllers\Admin\CustomerController::class, 'index'])->name('admin.customers.index');
+
+    Route::get('/fabric-types/create', [ProductController::class, 'createFabricType'])->name('admin.fabricTypes.create');
+    Route::post('/fabric-types', [ProductController::class, 'storeFabricType'])->name('admin.fabricTypes.store');
+    Route::get('/fabric-variants/create', [ProductController::class, 'createFabricVariant'])->name('admin.fabricVariants.create');
+    Route::post('/fabric-variants', [ProductController::class, 'storeFabricVariant'])->name('admin.fabricVariants.store');
 });
 
 // Route::middleware(['auth', 'role:user'])->group(function () {

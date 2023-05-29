@@ -16,7 +16,7 @@
                         <option value="{{ $type->id }}">{{ $type->name }}</option>
                     @endforeach
                 </select>
-                  {{-- add Fabric Variant button + it's route please --}}
+                <a href="{{ route('admin.fabricTypes.create') }}" class="btn btn-success mt-2">Add Fabric Types</a>
 
             </div>
             <div class="form-group">
@@ -26,7 +26,7 @@
                         <option value="{{ $variant->id }}">{{ $variant->name }}</option>
                     @endforeach
                 </select>
-                  {{-- add Fabric Variant button + it's route please --}}
+                <a href="{{ route('admin.fabricVariants.create') }}" class="btn btn-success mt-2">Add Fabric Variants</a>
             </div>
             <div class="form-group">
                 <label for="color-code">Color Code</label>

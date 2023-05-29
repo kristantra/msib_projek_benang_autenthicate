@@ -80,11 +80,18 @@ class ProductController extends Controller
             'fabric_variant_id' => 'required',
             'color_code' => 'required',
             'description' => 'required',
-            'image' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'quantity' => 'required',
             'price' => 'required',
         ]);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = date('YmdHis') . '.' . $image->extension();
+            $request->file('image')->storeAs('ProductImage', $imageName, 'public');
 
+            // Add the image name to the validated data array
+            $validated['image'] = $imageName;
+        }
         $product = new Product($validated);
         $product->save();
 
@@ -94,5 +101,43 @@ class ProductController extends Controller
     {
         $product = Product::with(['fabricVariant', 'fabricVariant.fabricType'])->findOrFail($id);
         return view('products.show', compact('product'));
+    }
+
+
+    public function createFabricType()
+    {
+        return view('admin.products.createFabricType');
+    }
+
+    public function storeFabricType(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required',
+            'description' => 'nullable'
+        ]);
+
+        $fabricType = new FabricType($validated);
+        $fabricType->save();
+
+        return redirect()->route('admin.products.create');
+    }
+
+    public function createFabricVariant()
+    {
+        $fabricTypes = FabricType::all();
+        return view('admin.products.createFabricVariant', compact('fabricTypes'));
+    }
+
+    public function storeFabricVariant(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|unique:fabric_variants',
+            'fabric_type_id' => 'required|exists:fabric_types,id'
+        ]);
+
+        $fabricVariant = new FabricVariant($validated);
+        $fabricVariant->save();
+
+        return redirect()->route('admin.products.create');
     }
 }
