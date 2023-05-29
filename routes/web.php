@@ -53,6 +53,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware('auth', 'role:user')->group(function () {
+    Route::get('/modal/profile-update', [ProfileController::class, 'editModal'])->name('profile.editModal');
+    Route::patch('/profile/modal', [ProfileController::class, 'updateProfileModal'])->name('profile.updateModal');
+});
+
+
 Route::get('/products', [\App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{id}', [\App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
 

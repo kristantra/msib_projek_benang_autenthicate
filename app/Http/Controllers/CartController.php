@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -24,7 +25,7 @@ class CartController extends Controller
         }
 
         // Pass the cart data and total price to the view
-        return view('cart.index', ['cart' => $cart, 'totalPrice' => $totalPrice]);
+        return view('cart.index', ['user' => Auth::user(), 'cart' => $cart, 'totalPrice' => $totalPrice]);
     }
 
     public function addToCart(Request $request)

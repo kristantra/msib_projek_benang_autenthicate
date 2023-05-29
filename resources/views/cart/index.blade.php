@@ -5,6 +5,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+            @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -57,17 +62,20 @@
             <a href="{{ route('products.index') }}" class="btn btn-primary">Continue Shopping</a>
          
 
-            @if (Auth::check() && Auth::user()->hasRole('user'))
-            <!-- The user is authenticated and has 'user' role -->
+            @if (Auth::check() && Auth::user()->hasRole('user') && !empty(Auth::user()->alamat) && !empty(Auth::user()->phone_number))
+            <!-- The user is authenticated, has 'user' role, and both 'alamat' and 'phone_number' are filled -->
             <a href="{{ route('checkout') }}" class="btn btn-success">Checkout</a>
         @else
-            <!-- The user is not authenticated or does not have 'user' role -->
-            <a href="{{ route('register') }}" class="btn btn-success">Checkout</a>
+            <!-- The user is not authenticated, does not have 'user' role, or either 'alamat' or 'phone_number' are empty -->
+            <a href="#" data-bs-toggle="modal" data-bs-target="#updateProfileModal" class="btn btn-success">Checkout</a>
         @endif
-        
+     
+
+
           
             
         </div>
     </div>
 </div>
+@include('modal.update-profile-modal')
 @endsection
