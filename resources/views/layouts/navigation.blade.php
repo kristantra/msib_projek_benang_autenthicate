@@ -58,7 +58,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/product') }}">Produk</a>
+                            <a class="nav-link" href="{{ url('/products') }}">Produk</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Tentang Kami</a>
@@ -67,22 +67,26 @@
 
                     <ul class="navbar-nav mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
+                            <a class="nav-link" href="{{ route('cart.index') }}"><i class="fas fa-shopping-cart"></i></a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user"></i> {{ Auth::user()->name }}
+                                <i class="fas fa-user"></i> {{ Auth::check() ? Auth::user()->name : '' }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a></li>
-                                <li>
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                        <button class="dropdown-item" type="submit">
-                                            Log Out
-                                        </button>
-                                    </form>
-                                </li>
+                                @if (Auth::check())
+                                    <!-- The user is authenticated -->
+                                    <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a></li>
+                                    <li>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <button class="dropdown-item" type="submit">Log Out</button>
+                                        </form>
+                                    </li>
+                                @else
+                                    <!-- The user is not authenticated -->
+                                    <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
+                                @endif
                             </ul>
                         </li>
                     </ul>

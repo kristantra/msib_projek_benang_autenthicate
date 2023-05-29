@@ -16,11 +16,12 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('fabric_variant_id');
-            $table->string('color');
+            $table->string('name');
             $table->string('color_code');
             $table->string('description')->nullable();
             $table->string('image')->nullable();
             $table->integer('quantity');
+            $table->integer('price');
             $table->timestamps();
 
             $table->foreign('fabric_variant_id')->references('id')->on('fabric_variants')->onDelete('cascade');

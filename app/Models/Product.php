@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['fabric_variant_id', 'color', 'color_code', 'description', 'image', 'quantity'];
+    protected $fillable = ['fabric_variant_id', 'name', 'color_code', 'description', 'image', 'quantity', 'price'];
 
     public function fabricVariant()
     {

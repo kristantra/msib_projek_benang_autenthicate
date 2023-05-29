@@ -1,7 +1,8 @@
-@extends('layouts.navigation')
+@extends('layouts.admin')
 
 @section('content')
     
+
 
 <div class="container">
     <div class="text-center">
@@ -35,7 +36,7 @@
         <!-- Add your product cards here. You can loop through your products and create a card for each one. -->
         <!-- Here's an example of what a single card might look like: -->
         @foreach($products as $product)
-        <div class="col-md-3 py-3">
+        <div class="col-md-3">
             <a href="{{ route('products.show', $product->id) }}" class="text-decoration-none text-dark">
                 <div class="card">
                     <!-- Here is your requested change -->
