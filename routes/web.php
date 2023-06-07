@@ -51,6 +51,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::patch('confirm-payment/{id}', [\App\Http\Controllers\AdminController::class, 'confirmPayment'])->name('admin.confirm');
 
     Route::get('/admin/customers', [App\Http\Controllers\ProfileController::class, 'customers'])->name('admin.customers.index');
+
+    Route::get('/admin/sales-report', [\App\Http\Controllers\AdminController::class, 'salesReport'])->name('admin.sales-report');
 });
 
 // Route::middleware(['auth', 'role:user'])->group(function () {

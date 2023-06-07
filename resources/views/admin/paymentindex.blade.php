@@ -66,13 +66,16 @@
                             <form method="POST" action="{{ route('admin.confirm', $order->id) }}">
                                 @csrf
                                 @method('PATCH')
-                                @if($order->status == 'pending')
-                                    <button type="submit" class="btn btn-success">Confirm Payment</button>
-                                @else
-                                    <button type="submit" class="btn btn-danger">Payment Confirmed</button>
-                                @endif
+                                <select name="status" class="form-control" onchange="this.form.submit()">
+                                    <option value="Pembayaran belum di konfirmasi" {{ $order->status == 'Pembayaran belum di konfirmasi' ? 'selected' : '' }}>Pembayaran belum di konfirmasi</option>
+                                    <option value="pembayaran terkonfirmasi" {{ $order->status == 'pembayaran terkonfirmasi' ? 'selected' : '' }}>Pembayaran terkonfirmasi</option>
+                                    <option value="pesanan diproses" {{ $order->status == 'pesanan diproses' ? 'selected' : '' }}>Pesanan diproses</option>
+                                    <option value="pesanan dikirim" {{ $order->status == 'pesanan dikirim' ? 'selected' : '' }}>Pesanan dikirim</option>
+                                    <option value="selesai" {{ $order->status == 'selesai' ? 'selected' : '' }}>Selesai</option>
+                                </select>
                             </form>
                         </td>
+                        
                     </tr>
                     @endforeach
                 </tbody>
