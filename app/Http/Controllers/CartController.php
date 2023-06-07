@@ -33,15 +33,25 @@ class CartController extends Controller
         $product_id = $request->input('product_id');
         $quantity = $request->input('quantity');
 
-        // validation for product_id and quantity, 
-        // and you could also add some checks if the product is available or not
+        // Fetch the product details
+        $product = Product::with(['fabricVariant', 'fabricVariant.fabricType'])->find($product_id);
 
+        // Get the current cart data from session
         $cart = session()->get('cart', []);
 
+        // Calculate total quantity for the product
+        $totalQuantity = (isset($cart[$product_id]) ? $cart[$product_id]['quantity'] : 0) + $quantity;
+
+        // Check if total quantity is not more than available quantity
+        if ($totalQuantity > $product->quantity) {
+            return back()->with('error', 'The total quantity for this product in the cart is more than available stock!');
+        }
+
+        // If product exists in cart, increment quantity
         if (isset($cart[$product_id])) {
             $cart[$product_id]['quantity'] += $quantity;
         } else {
-            $product = Product::with(['fabricVariant', 'fabricVariant.fabricType'])->find($product_id);
+            // Otherwise, add new product to cart
             $cart[$product_id] = [
                 'name' => $product->name,
                 'quantity' => $quantity,
@@ -52,9 +62,13 @@ class CartController extends Controller
             ];
         }
 
+        // Save the cart data back to the session
         session()->put('cart', $cart);
+
+        // Redirect back with a success message
         return back()->with('success', 'Product added to cart successfully!');
     }
+
 
 
     public function updateCart(Request $request, $id)
@@ -124,6 +138,7 @@ class CartController extends Controller
         $order->payment_confirmation_image = $imageName;
         $order->save();
 
+
         // Create OrderItems and associate them with the new Order
         foreach (session('cart') as $id => $details) {
             $orderItem = new OrderItem();
@@ -131,6 +146,11 @@ class CartController extends Controller
             $orderItem->product_id = $id;
             $orderItem->quantity = $details['quantity'];
             $orderItem->save();
+
+            // Reduce the quantity of the product in stock
+            $product = Product::find($id);
+            $product->quantity -= $details['quantity'];
+            $product->save();
         }
 
         // Clear the cart

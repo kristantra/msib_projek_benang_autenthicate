@@ -79,6 +79,16 @@
               </p>
             </a>
           </li>
+          <!-- In your HTML file -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-line"></i>
+              <p>
+                Sales Report
+              </p>
+            </a>
+          </li>
+
         </ul>
       </nav>
            <!-- /.sidebar-menu -->

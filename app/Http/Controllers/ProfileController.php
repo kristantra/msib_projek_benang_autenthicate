@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -84,5 +85,11 @@ class ProfileController extends Controller
         $orders = Order::where('user_id', Auth::id())->get();
 
         return view('profile.order-history', compact('orders'));
+    }
+    public function customers()
+    {
+        $users = User::all();
+
+        return view('admin.customers.index', compact('users'));
     }
 }
