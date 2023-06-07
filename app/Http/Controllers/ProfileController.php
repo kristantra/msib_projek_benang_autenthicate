@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Order;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,7 +35,12 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        // return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        if (url()->previous() == route('profile.edit')) {
+            return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        } else {
+            return Redirect::intended('checkout')->with('status', 'profile-updated');
+        }
     }
 
     /**
@@ -72,5 +78,11 @@ class ProfileController extends Controller
         $request->user()->save();
 
         return redirect()->back()->with('status', 'Update Berhasil!, Sekarang kamu bisa Checkout');
+    }
+    public function orderHistory()
+    {
+        $orders = Order::where('user_id', Auth::id())->get();
+
+        return view('profile.order-history', compact('orders'));
     }
 }

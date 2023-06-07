@@ -77,6 +77,7 @@
                                 @if (Auth::check())
                                     <!-- The user is authenticated -->
                                     <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('profile.order-history') }}">My Orders</a></li>
                                     <li>
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf

@@ -46,17 +46,24 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/fabric-types', [ProductController::class, 'storeFabricType'])->name('admin.fabricTypes.store');
     Route::get('/fabric-variants/create', [ProductController::class, 'createFabricVariant'])->name('admin.fabricVariants.create');
     Route::post('/fabric-variants', [ProductController::class, 'storeFabricVariant'])->name('admin.fabricVariants.store');
+
+    Route::get('confirm-payment', [\App\Http\Controllers\AdminController::class, 'confirmPaymentIndex'])->name('admin.paymentindex');
+    Route::patch('confirm-payment/{id}', [\App\Http\Controllers\AdminController::class, 'confirmPayment'])->name('admin.confirm');
 });
 
 // Route::middleware(['auth', 'role:user'])->group(function () {
 Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
 Route::post('/checkout/confirm', [CartController::class, 'confirmCheckout'])->name('checkout.confirm');
+
 // });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // routes/web.php
+
+    Route::get('/profile/order-history', [ProfileController::class, 'orderHistory'])->name('profile.order-history')->middleware('auth');
 });
 
 Route::middleware('auth', 'role:user')->group(function () {
@@ -72,6 +79,8 @@ Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add')
 Route::get('/carts', [CartController::class, 'index'])->name('cart.index');
 Route::post('/checkout', [CartController::class, 'checkout'])->name('checkout');
 Route::put('/cart/{id}/update', [CartController::class, 'updateCart'])->name('cart.update');
+
+
 
 Route::delete('/cart/{id}/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
 Route::get('/cart/{id}/edit', [CartController::class, 'editCart'])->name('cart.edit');

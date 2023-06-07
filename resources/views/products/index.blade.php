@@ -7,7 +7,13 @@
     <div class="text-center">
         <h1>Our Product Colors</h1>
     </div>
-
+    <div class="col-md-12">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+    </div>
     @role('admin')
     <a href="{{ route('admin.products.create') }}" class="btn btn-primary">Add Product</a>
     @endrole

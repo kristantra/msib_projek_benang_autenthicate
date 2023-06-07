@@ -29,11 +29,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Update Cart</button>
 
-                        @role('user')
-                        <a href="{{ route('/') }}" class="btn btn-danger">Checkout</a>
-                        @else
-                            <a href="{{ route('products.index') }}" class="btn btn-danger">Checkout</a>
-                        @endrole 
+                      
 
                     </form>                 
                 </div>

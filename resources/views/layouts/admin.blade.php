@@ -72,7 +72,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.payments.index') }}" class="nav-link">
+            <a href="{{ route('admin.paymentindex') }}" class="nav-link">
               <i class="nav-icon fas fa-dollar-sign"></i>
               <p>
                 Payment
@@ -111,6 +111,9 @@
   <!-- /.content-wrapper -->
 </div>
 <!-- ./wrapper -->
+<script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
 </body>
+
+
 </html>
 

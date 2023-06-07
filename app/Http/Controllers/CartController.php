@@ -87,7 +87,7 @@ class CartController extends Controller
 
         return view('cart.update', ['product' => $product]);
     }
-
+    // dari sini ke bawah itu untuk checkout
     public function checkout()
     {
         // Here you could pass any additional data to the view if needed
@@ -96,16 +96,35 @@ class CartController extends Controller
 
     public function confirmCheckout(Request $request)
     {
-        // Here you would handle the confirmation of the order
-        // Save the order to the database
-        // Clear the cart from the session
+        // Check if the cart is empty
 
+
+        // Check if the user has necessary information filled in
+        $user = auth()->user();
+        if (!$user->phone_number || !$user->alamat) {
+            return back()->withErrors('Alamat atau nomor teleponmu belum lengkap');
+        }
+
+        // Validate the uploaded image
+        $request->validate([
+            'paymentProofUpload' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ], [
+            'paymentProofUpload.required' => 'Bukti pembayaranmu gagal terupload'
+        ]);
+
+        // Process the image and save it in the 'images' directory
+        $imageName = time() . '.' . $request->paymentProofUpload->extension();
+        $request->paymentProofUpload->move(public_path('images'), $imageName);
+
+        // Create a new Order and associate it with the current user
         $order = new Order();
-        $order->user_id = auth()->user()->id;
+        $order->user_id = $user->id;
         $order->order_date = now();
         $order->status = 'pending';
+        $order->payment_confirmation_image = $imageName;
         $order->save();
 
+        // Create OrderItems and associate them with the new Order
         foreach (session('cart') as $id => $details) {
             $orderItem = new OrderItem();
             $orderItem->order_id = $order->id;
@@ -114,8 +133,40 @@ class CartController extends Controller
             $orderItem->save();
         }
 
+        // Clear the cart
         $request->session()->forget('cart');
 
+        // Redirect back to the checkout page with a success message
+        if (session('cart') === null || count(session('cart')) == 0) {
+            return redirect()->route('products.index')->with('success', 'Order confirmed!');
+        }
         return redirect()->route('checkout')->with('success', 'Order confirmed!');
     }
+
+
+
+    // public function uploadPaymentProof(Request $request)
+    // {
+    //     $request->validate([
+    //         'paymentProofUpload' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    //     ]);
+
+    //     $imageName = time() . '.' . $request->paymentProofUpload->extension();
+
+    //     $request->paymentProofUpload->move(public_path('images'), $imageName);
+
+    //     $order = Order::find($request->session()->get('orderId'));
+
+    //     if ($order) {
+    //         $order->payment_confirmation_image = $imageName;
+    //         $order->save();
+    //     }
+
+    //     $request->session()->forget('cart');
+    //     $request->session()->forget('orderId');
+
+    //     return back()
+    //         ->with('success', 'You have successfully upload payment proof.')
+    //         ->with('image', $imageName);
+    // }
 }

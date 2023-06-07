@@ -29,8 +29,14 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // Check if there's a 'cart' session
+        if ($request->session()->has('cart')) {
+            return redirect()->intended('/carts');
+        }
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
+
 
     /**
      * Destroy an authenticated session.

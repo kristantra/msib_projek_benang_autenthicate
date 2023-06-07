@@ -20,7 +20,12 @@
             </div>
         @endif
             <div class="card">
-                <img src="{{ $product->image }}" alt="{{ $product->color }}" style="width: 100%; height: auto;">
+                @if(strpos($product->image, 'http') !== false)
+                    <img src="{{ $product->image }}" alt="{{ $product->color }}" class="img-fluid" style="object-fit: cover; height: auto;">
+                @else
+                    <img src="{{ asset('storage/ProductImage/'.$product->image) }}" alt="{{ $product->color }}" class="img-fluid" style="object-fit: cover; height: auto;">
+                @endif
+
                 <div class="card-body">
                     <h5 class="card-title">{{ $product->name }}</h5>
                     <p class="card-text">Price: Rp. {{ number_format($product->price, 0, ',', '.') }}</p>
@@ -38,11 +43,11 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Tambah keranjang</button>
 
-                        @role('user')
+                        {{-- @role('user')
                         <a href="{{ route('checkout') }}" class="btn btn-danger">Checkout</a>
                         @else
                             <a href="{{ route('products.index') }}" class="btn btn-danger">Checkout</a>
-                        @endrole 
+                        @endrole  --}}
 
                     </form>
                     
