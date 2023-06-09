@@ -9,10 +9,10 @@
         </div>
         <div class="card-body">
             <h4>Total Revenue</h4>
-            <p>Daily: {{ $totalRevenue['daily'] }}</p>
-            <p>Weekly: {{ $totalRevenue['weekly'] }}</p>
-            <p>Monthly: {{ $totalRevenue['monthly'] }}</p>
-            <p>Yearly: {{ $totalRevenue['yearly'] }}</p>
+            <p>Daily: Rp.  {{number_format($totalRevenue['daily'], 0, ',', '.')}} </p>
+            <p>Weekly: Rp.{{number_format($totalRevenue['weekly'], 0, ',', '.')}} </p>
+            <p>Monthly: Rp. {{ number_format($totalRevenue['monthly'] , 0, ',', '.')}}</p>
+            <p>Yearly: Rp.{{number_format($totalRevenue['yearly'], 0, ',', '.')  }}</p>
 
             <h4>Most Sold Products</h4>
             <table class="table table-bordered">
@@ -25,10 +25,10 @@
                 </thead>
                 <tbody>
                     @foreach ($productSales as $productId => $data)
-                        <tr>
+                      
                             <td>{{ $data['name'] }}</td>
                             <td>{{ $data['quantity'] }}</td>
-                            <td>{{ $data['total_sales'] }}</td>
+                            <td>Rp. {{ number_format($data['total_sales'], 0, ',', '.') }}</td>
                         </tr>
                     @endforeach
                 </tbody>

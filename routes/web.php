@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('/');
+    return view('dashboard');
+})->name('dashboard');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -38,6 +38,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('/admin/products/create', [\App\Http\Controllers\ProductController::class, 'create'])->name('admin.products.create');
     Route::post('/admin/products', [\App\Http\Controllers\ProductController::class, 'store'])->name('admin.products.store');
+    Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
+    Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
+    Route::delete('/products/{id}',  [ProductController::class, 'destroy'])->name('products.destroy');
 
     Route::get('/admin/payments', [\App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('admin.payments.index');
     Route::get('/admin/customers', [\App\Http\Controllers\Admin\CustomerController::class, 'index'])->name('admin.customers.index');

@@ -60,7 +60,8 @@
                                 $totalAmount += $item->product->price * $item->quantity;
                             }
                             @endphp
-                            {{ number_format($totalAmount, 2) }}
+                            
+                            Rp. {{ number_format($totalAmount, 0, ',', '.') }}
                         </td>
                         <td>
                             <form method="POST" action="{{ route('admin.confirm', $order->id) }}">

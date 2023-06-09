@@ -26,6 +26,9 @@
                 Fabric Types
             </button>
             <div class="dropdown-menu" aria-labelledby="fabricDropdown">
+                <a class="dropdown-item" href="{{ route('products.index') }}">
+                    Semua Koleksi
+                </a>
                 <!-- Add your fabric types here -->
                 @foreach ($fabricTypes as $fabricType)
                     <a class="dropdown-item" href="{{ route('products.index', ['sort' => 'fabricType', 'fabric_type_id' => $fabricType->id]) }}">
@@ -56,6 +59,18 @@
                         <!-- Display the price -->
                         <p class="card-text">Price: Rp. {{ number_format($product->price, 0, ',', '.') }}</p>
                     </div>
+                    {{-- role admin --}}
+                    @role('admin') <!-- Add the buttons only for admins -->
+                    <div class="mt-2">
+                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-info">Edit</a>
+                        <form method="POST" action="{{ route('products.destroy', $product->id) }}" style="display: inline-block;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
+
+                        </form>
+                    </div>
+                    @endrole
                 </div>
             </a>
         </div>
