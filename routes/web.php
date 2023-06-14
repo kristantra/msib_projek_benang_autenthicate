@@ -33,10 +33,10 @@ Route::get('/about', function () {
 })->name('about');
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin', function () {
-        return view('admin.index');
-    })->name('admin.index');
-
+    // Route::get('/admin', function () {
+    //     return view('admin.index');
+    // })->name('admin.index');
+    Route::get('/admin', [\App\Http\Controllers\ProductController::class, 'indexAdmin'])->name('admin.index');
     Route::get('/admin/products', [\App\Http\Controllers\ProductController::class, 'indexAdmin'])->name('admin.products.index');
 
     Route::get('/admin/products/create', [\App\Http\Controllers\ProductController::class, 'create'])->name('admin.products.create');

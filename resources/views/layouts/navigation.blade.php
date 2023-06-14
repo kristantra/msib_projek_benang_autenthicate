@@ -63,8 +63,13 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/about') }}">Tentang Kami</a>
                         </li>
+                        @role('admin') <!-- Add the buttons only for admins -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/admin') }}">Admin</a>
+                        </li>
+                        @endrole
                     </ul>
-
+                    
                     <ul class="navbar-nav mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('cart.index') }}"><i class="fas fa-shopping-cart"></i></a>
