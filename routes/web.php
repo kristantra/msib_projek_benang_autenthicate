@@ -28,6 +28,9 @@ Route::get('/dashboard', function () {
 // Route::get('/admin', function () {
 //     return view('admin.index');
 // })->middleware(['auth', 'role:admin'])->name('admin.index');
+Route::get('/about', function () {
+    return view('about.index');
+})->name('about');
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin', function () {
