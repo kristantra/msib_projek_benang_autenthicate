@@ -19,7 +19,7 @@
     @endrole
 
     
-
+{{-- 
     <div class="d-flex justify-content-end">
         <div class="dropdown mr-2">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="fabricDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,7 +34,7 @@
                 @endforeach
             </div>
         </div>        
-    </div>
+    </div> --}}
     {{-- until here --}}
 
     <div class="row mt-3">

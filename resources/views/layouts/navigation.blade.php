@@ -113,8 +113,8 @@
                     <h5>Menu</h5>
                     <ul class="list-unstyled text-small">
                         <li><a class="link-secondary" href="{{ route('dashboard') }}">Beranda</a></li>
-                        <li><a class="link-secondary" href="#">Produk</a></li>
-                        <li><a class="link-secondary" href="#">Tentang Kami</a></li>
+                        <li><a class="link-secondary"href="{{ url('/products') }}">Produk</a></li>
+                        <li><a class="link-secondary" href="{{ url('/about') }}">Tentang Kami</a></li>
                     </ul>
                 </div>
     
