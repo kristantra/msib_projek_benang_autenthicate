@@ -97,7 +97,7 @@ class ProductController extends Controller
         $product = new Product($validated);
         $product->save();
 
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.index')->with('status', 'Product added successfully!');
     }
     public function show($id)
     {
@@ -181,7 +181,7 @@ class ProductController extends Controller
 
         $product->update($validated);
 
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.index')->with('status', 'Product updated successfully!');
     }
 
 

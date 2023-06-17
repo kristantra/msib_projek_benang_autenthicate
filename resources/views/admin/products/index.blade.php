@@ -13,7 +13,13 @@
                 {{ session('success') }}
             </div>
         @endif
+        @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+         @endif
     </div>
+    
     @role('admin')
     <a href="{{ route('admin.products.create') }}" class="btn btn-primary">Add Product</a>
     @endrole

@@ -34,16 +34,7 @@
                 </tbody>
             </table>
 
-            <h4>Unsold Products</h4>
-            @if($unsoldProducts->isEmpty())
-                <p>All products have been sold at least once.</p>
-            @else
-                <ul>
-                    @foreach($unsoldProducts as $product)
-                        <li>{{ $product->name }}</li>
-                    @endforeach
-                </ul>
-            @endif
+          
         </div>
     </div>
 </div>

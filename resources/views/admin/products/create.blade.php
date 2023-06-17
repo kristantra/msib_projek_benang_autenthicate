@@ -3,11 +3,19 @@
 @section('content')
     <div class="container">
         <h2>Add Product</h2>
+        @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+         @endif
         <form method="POST" action="{{ route('admin.products.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="product-name">Product Name</label>
                 <input type="text" class="form-control" id="product-name" name="name" required>
+                @error('name')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="fabric-type">Fabric Type</label>
@@ -39,14 +47,23 @@
             <div class="form-group">
                 <label for="image">Product Image</label>
                 <input type="file" class="form-control-file" id="image" name="image">
+                @error('image')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="quantity">Quantity</label>
                 <input type="number" class="form-control" id="quantity" name="quantity" required>
+                @error('quantity')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
             <div class="form-group">
-                <label for="quantity">Price</label>
-                <input type="number" class="form-control" id="quantity" name="price" required>
+                <label for="price">Price</label>
+                <input type="number" class="form-control" id="price" name="price" required>
+                @error('price')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
             <button type="submit" class="btn btn-primary">Add Product</button>
         </form>
