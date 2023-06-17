@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
-    <script src="https://kit.fontawesome.com/7adbf01c7f.js" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 3 | Starter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-
-    <meta name="viewport" content="width=`, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin Page</title>
-</head>
-<body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+    <script src="https://kit.fontawesome.com/7adbf01c7f.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  
+  </head>
+  <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
 
   <!-- Navbar -->
-  {{-- <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
     </ul>
-  </nav> --}}
+  </nav>
+
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
@@ -43,9 +44,9 @@
           <a href="#" class="d-block">Admin Name</a>
         </div>
       </div> --}}
-
-      <!-- Sidebar Menu -->
+    <div class="sidebar">
       <nav class="mt-2">
+      <!-- Sidebar Menu -->
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
             <a href="{{ route('dashboard') }}" class="nav-link">
@@ -104,7 +105,6 @@
               </p>
           </a>
       </li>
-      
         </ul>
       </nav>
            <!-- /.sidebar-menu -->
@@ -114,30 +114,19 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         @yield('content')
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
+
+
+ 
 </div>
 <!-- ./wrapper -->
 <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
 </body>
 
 

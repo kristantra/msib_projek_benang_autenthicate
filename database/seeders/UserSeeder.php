@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -23,6 +24,8 @@ class UserSeeder extends Seeder
                 'email' => 'test' . $i . '@gmail.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('password'),
+                'phone_number' => '081' . rand(100000000, 999999999),
+                'alamat' => Str::random(10),
             ]);
         }
     }
