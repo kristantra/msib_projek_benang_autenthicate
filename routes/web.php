@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -55,10 +56,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::get('confirm-payment', [\App\Http\Controllers\AdminController::class, 'confirmPaymentIndex'])->name('admin.paymentindex');
     Route::patch('confirm-payment/{id}', [\App\Http\Controllers\AdminController::class, 'confirmPayment'])->name('admin.confirm');
+    Route::delete('/admin/order/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
 
     Route::get('/admin/customers', [App\Http\Controllers\ProfileController::class, 'customers'])->name('admin.customers.index');
 
     Route::get('/admin/sales-report', [\App\Http\Controllers\AdminController::class, 'salesReport'])->name('admin.sales-report');
+    Route::get('/admin/manualorder', [\App\Http\Controllers\AdminController::class, 'createManualOrder'])->name('admin.manualorder');
+    Route::post('/admin/manualorder', [\App\Http\Controllers\AdminController::class, 'storeManualOrder'])->name('admin.storemanualorder');
 });
 
 // Route::middleware(['auth', 'role:user'])->group(function () {

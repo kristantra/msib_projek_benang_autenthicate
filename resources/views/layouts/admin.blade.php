@@ -88,7 +88,15 @@
               </p>
             </a>
           </li>
-
+          <li class="nav-item">
+            <a href="{{ route('admin.manualorder') }}" class="nav-link">
+                <i class="nav-icon fas fa-pencil-alt"></i>
+                <p>
+                    Manual Order
+                </p>
+            </a>
+        </li>
+        
         </ul>
       </nav>
            <!-- /.sidebar-menu -->

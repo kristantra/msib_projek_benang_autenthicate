@@ -11,7 +11,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone Number</th>
-                            <th>Alamat</th>
+                            <th>Address</th>
                             <th>Registered On</th>
                         </tr>
                     </thead>

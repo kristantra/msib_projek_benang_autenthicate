@@ -15,19 +15,20 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Order ID</th>
+                     
                         <th>User</th>
                         <th>Order Date</th>
                         <th>Products</th>
                         <th>Payment Confirmation Image</th>
                         <th>Total Amount</th>
                         <th>Action</th>
+                        <th>Function</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($orders as $order)
                     <tr>
-                        <td>{{ $order->id }}</td>
+                   
                         <td>{{ $order->user->name }}</td>
                         <td>{{ $order->order_date }}</td>
                         <td>
@@ -68,15 +69,25 @@
                                 @csrf
                                 @method('PATCH')
                                 <select name="status" class="form-control" onchange="this.form.submit()">
-                                    <option value="Pembayaran belum di konfirmasi" {{ $order->status == 'Pembayaran belum di konfirmasi' ? 'selected' : '' }}>Pembayaran belum di konfirmasi</option>
-                                    <option value="pembayaran terkonfirmasi" {{ $order->status == 'pembayaran terkonfirmasi' ? 'selected' : '' }}>Pembayaran terkonfirmasi</option>
-                                    <option value="pesanan diproses" {{ $order->status == 'pesanan diproses' ? 'selected' : '' }}>Pesanan diproses</option>
-                                    <option value="pesanan dikirim" {{ $order->status == 'pesanan dikirim' ? 'selected' : '' }}>Pesanan dikirim</option>
-                                    <option value="selesai" {{ $order->status == 'selesai' ? 'selected' : '' }}>Selesai</option>
+                                    @if($order->status == "Pembayaran melalui tokopedia")
+                                        <option value="pembayaran melalui tokopedia" selected disabled>Pembayaran melalui tokopedia</option>
+                                    @else
+                                        <option value="Pembayaran belum di konfirmasi" {{ $order->status == 'Pembayaran belum di konfirmasi' ? 'selected' : '' }}>Pembayaran belum di konfirmasi</option>
+                                        <option value="pembayaran terkonfirmasi" {{ $order->status == 'pembayaran terkonfirmasi' ? 'selected' : '' }}>Pembayaran terkonfirmasi</option>
+                                        <option value="pesanan diproses" {{ $order->status == 'pesanan diproses' ? 'selected' : '' }}>Pesanan diproses</option>
+                                        <option value="pesanan dikirim" {{ $order->status == 'pesanan dikirim' ? 'selected' : '' }}>Pesanan dikirim</option>
+                                        <option value="selesai" {{ $order->status == 'selesai' ? 'selected' : '' }}>Selesai</option>
+                                    @endif
                                 </select>
                             </form>
                         </td>
-                        
+                        <td>
+                            <form action="{{ route('admin.destroy', $order->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
