@@ -166,4 +166,9 @@ class AdminController extends Controller
 
         return redirect()->route('admin.manualorder')->with('status', 'Manual order has been created successfully!');
     }
+    public function warehouseIndex()
+    {
+        $products = Product::all();
+        return view('admin.warehouse', compact('products'));
+    }
 }

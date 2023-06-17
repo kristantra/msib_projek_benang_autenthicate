@@ -63,6 +63,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/sales-report', [\App\Http\Controllers\AdminController::class, 'salesReport'])->name('admin.sales-report');
     Route::get('/admin/manualorder', [\App\Http\Controllers\AdminController::class, 'createManualOrder'])->name('admin.manualorder');
     Route::post('/admin/manualorder', [\App\Http\Controllers\AdminController::class, 'storeManualOrder'])->name('admin.storemanualorder');
+
+    Route::get('/admin/warehouse', [AdminController::class, 'warehouseIndex'])->name('admin.warehouse');
 });
 
 // Route::middleware(['auth', 'role:user'])->group(function () {

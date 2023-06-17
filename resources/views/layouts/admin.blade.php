@@ -96,7 +96,15 @@
                 </p>
             </a>
         </li>
-        
+        <li class="nav-item">
+          <a href="{{ route('admin.warehouse') }}" class="nav-link">
+              <i class="nav-icon fas fa-warehouse"></i>
+              <p>
+                  Warehouse
+              </p>
+          </a>
+      </li>
+      
         </ul>
       </nav>
            <!-- /.sidebar-menu -->
