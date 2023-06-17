@@ -43,7 +43,7 @@
             <div class="container">
                 <!-- Logo -->
                 <a class="navbar-brand" href="{{ route('dashboard') }}">
-                    Logo
+                    <img src="{{ url('images/logo.jpg') }}" alt="" style="width: 30px; height: 30px; border-radius: 10px; overflow: hidden;">
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
