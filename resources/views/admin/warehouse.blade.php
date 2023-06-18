@@ -12,7 +12,7 @@
                         <th class="text-center">Sold Quantity</th>
                         <th class="text-center">Price</th>
                         <th class="text-center">Description</th>
-                        <th class="text-center">Image</th>
+                        <th class="text-center">Product Image</th>
                         <th class="text-center">Action</th>
                     </tr>
                 </thead>
@@ -27,8 +27,8 @@
                         
                         <td class="text-center">{{ $product->quantity }}</td>
                         <td class="text-center">{{ $product->orderItems->sum('quantity') }}</td>
-                        <td class="text-center">Rp. {{ number_format($product->price, 0, ',', '.') }}</td>
-                        <td class="text-center">{{ $product->description }}</td>
+                        <td class="text-nowrap">Rp. {{ number_format($product->price, 0, ',', '.') }}</td>
+                        <td>{{ $product->description }}</td>
                         {{--       <img src="{{ asset('images/'.$order->payment_confirmation_image) }}" alt="Payment Confirmation" height="50" data-toggle="modal" data-target="#imageModal{{ $order->id }}"> --}}
                         <td class="text-center">
                             @if(strpos($product->image, 'http') !== false)
@@ -52,6 +52,9 @@
                     @endforeach
                 </tbody>
         </table>
+        <div class="d-flex justify-content-center mt-3">
+            {{ $products->links() }}
+        </div>
     </div>
 </div>
 @endsection

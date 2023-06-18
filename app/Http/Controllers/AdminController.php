@@ -17,7 +17,7 @@ class AdminController extends Controller
 {
     public function confirmPaymentIndex()
     {
-        $orders = Order::all(); // retrieve all orders
+        $orders = Order::paginate(12); // retrieve all orders
         return view('admin.paymentindex', compact('orders'));
     }
 
@@ -29,7 +29,6 @@ class AdminController extends Controller
         $order->status = $request->status;
 
         $order->save();
-
         return redirect()->route('admin.paymentindex')->with('status', 'Payment status updated!');
     }
 
@@ -168,7 +167,7 @@ class AdminController extends Controller
     }
     public function warehouseIndex()
     {
-        $products = Product::all();
+        $products = Product::paginate(12);
         return view('admin.warehouse', compact('products'));
     }
 }

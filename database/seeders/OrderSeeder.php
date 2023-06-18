@@ -37,10 +37,10 @@ class OrderSeeder extends Seeder
         foreach ($users as $user) {
             for ($month = 1; $month <= 6; $month++) {
                 for ($i = 0; $i < 4; $i++) {
-                    $date = "2023-" . $month . "-" . rand(1, 28);
+                    $date = "2023-" . $month . "-" . rand(1, 20);
 
                     // Stop creating orders if there are already 25 or more
-                    if (Order::count() >= 25) {
+                    if (Order::count() >= 30) {
                         return;
                     }
 

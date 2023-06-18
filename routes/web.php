@@ -46,8 +46,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
     Route::delete('/products/{id}',  [ProductController::class, 'destroy'])->name('products.destroy');
 
-    Route::get('/admin/payments', [\App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('admin.payments.index');
-    Route::get('/admin/customers', [\App\Http\Controllers\Admin\CustomerController::class, 'index'])->name('admin.customers.index');
+
+    Route::get('/admin/customers', [AdminController::class, 'index'])->name('admin.customers.index');
 
     Route::get('/fabric-types/create', [ProductController::class, 'createFabricType'])->name('admin.fabricTypes.create');
     Route::post('/fabric-types', [ProductController::class, 'storeFabricType'])->name('admin.fabricTypes.store');

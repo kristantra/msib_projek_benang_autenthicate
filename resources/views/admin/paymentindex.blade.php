@@ -38,7 +38,7 @@
                             @endforeach
                             </ul>
                         </td>
-                        <td>
+                        <td class="text-center">
                             <!-- The clickable thumbnail -->
                             <img src="{{ asset('images/'.$order->payment_confirmation_image) }}" alt="Payment Confirmation" height="50" data-toggle="modal" data-target="#imageModal{{ $order->id }}">
 
@@ -92,6 +92,11 @@
                     @endforeach
                 </tbody>
             </table>
+             <!-- Start Pagination -->
+             <div class="d-flex justify-content-center mt-3">
+                {{ $orders->links() }}
+            </div>
+            <!-- End Pagination -->
         </div>
     </div>
 </div>
