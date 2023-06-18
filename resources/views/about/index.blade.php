@@ -26,11 +26,11 @@
 </div>
 
 <div class="text" style="margin-top: 40px; margin-bottom:50px;">
-  <h5 style="text-align: center; margin-bottom:40px; font-family: Amarante;">Aneka Benang - Membawa Kreativitas Anda Menjadi Nyata!</h5>
+  <h5 style="text-align: center; margin-bottom:40px; font-family: Amarante;">Delight - Membawa Kreativitas Anda Menjadi Nyata!</h5>
   <p style="text-align: justify; margin-left:30px; margin-right:30px;">
-    Selamat datang di Aneka Benang, destinasi terbaik untuk kebutuhan benang Anda. Dengan koleksi benang berkualitas tinggi, kami memastikan setiap proyek kreatif Anda menjadi sukses. Temukan beragam pilihan benang yang indah dan tahan lama, dan biarkan imajinasi Anda berputar dengan bebas. Bergabunglah dengan kami dan jadilah bagian dari komunitas kreatif yang tak terbatas.
+    Selamat datang di Delight, destinasi terbaik untuk kebutuhan benang Anda. Dengan koleksi benang berkualitas tinggi, kami memastikan setiap proyek kreatif Anda menjadi sukses. Temukan beragam pilihan benang yang indah dan tahan lama, dan biarkan imajinasi Anda berputar dengan bebas. Bergabunglah dengan kami dan jadilah bagian dari komunitas kreatif yang tak terbatas.
   </p>
-  <p style="margin-left:30px;"><small>Aneka Benang - Wujudkan karya luar biasa Anda!</small></p>
+  <p style="margin-left:30px;"><small>Delight - Wujudkan karya luar biasa Anda!</small></p>
 </div>
 
 @endsection
