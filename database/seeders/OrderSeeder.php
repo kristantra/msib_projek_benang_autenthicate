@@ -56,7 +56,7 @@ class OrderSeeder extends Seeder
             'user_id' => $user->id,
             'order_date' => $date,
             'status' => 'Pembayaran belum di konfirmasi', // or any status that you have
-            'payment_confirmation_image' => 'dummy_image.jpg', // replace with actual image or url
+            'payment_confirmation_image' => 'logo.jpg', // replace with actual image or url
         ]);
 
         // Generating 1 to 3 random order items for each order
