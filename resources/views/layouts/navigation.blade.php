@@ -54,14 +54,14 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('dashboard') }}" {{ request()->routeIs('dashboard') ? 'active' : '' }}>
-                                Beranda
+                                Home
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/products') }}">Produk</a>
+                            <a class="nav-link" href="{{ url('/products') }}">Product</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/about') }}">Tentang Kami</a>
+                            <a class="nav-link" href="{{ url('/about') }}">About Us</a>
                         </li>
                         @role('admin') <!-- Add the buttons only for admins -->
                         <li class="nav-item">

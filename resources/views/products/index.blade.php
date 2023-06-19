@@ -4,9 +4,7 @@
     
 
 <div class="container">
-    <div class="text-center">
-        <h1>Our Product Colors</h1>
-    </div>
+   
     <div class="col-md-12">
         @if (session('success'))
             <div class="alert alert-success">

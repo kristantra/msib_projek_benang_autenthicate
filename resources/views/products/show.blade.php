@@ -55,7 +55,7 @@
                             <input type="number" name="quantity" class="form-control" id="floatingQuantitiy" placeholder="Quantity" required>
                             <label for="floatingQuantitiy">Quantity</label>
                         </div>
-                        <button type="submit" class="btn btn-primary">Tambah keranjang</button>
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
 
                         {{-- @role('user')
                         <a href="{{ route('checkout') }}" class="btn btn-danger">Checkout</a>
