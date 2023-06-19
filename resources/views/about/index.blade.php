@@ -1,5 +1,22 @@
 @extends('layouts.navigation')
+<style>
+  .content-text {
+        text-align: center; 
+        margin-bottom: 40px; 
+        font-family: 'Amarante', cursive; 
+        margin-left: 30px; 
+        margin-right: 30px;
+        font-size: 1.1em; /* Meningkatkan ukuran font */
+    }
 
+    .small-text {
+        margin-left: 30px;
+    }
+
+    .content-container {
+        margin-top: 50px;
+    }
+</style>
 @section('content')
 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
@@ -25,12 +42,14 @@
   </button>
 </div>
 
-<div class="text" style="margin-top: 40px; margin-bottom:50px;">
-  <h5 style="text-align: center; margin-bottom:40px; font-family: Amarante;">Delight - Membawa Kreativitas Anda Menjadi Nyata!</h5>
-  <p style="text-align: justify; margin-left:30px; margin-right:30px;">
-    Selamat datang di Delight, destinasi terbaik untuk kebutuhan benang Anda. Dengan koleksi benang berkualitas tinggi, kami memastikan setiap proyek kreatif Anda menjadi sukses. Temukan beragam pilihan benang yang indah dan tahan lama, dan biarkan imajinasi Anda berputar dengan bebas. Bergabunglah dengan kami dan jadilah bagian dari komunitas kreatif yang tak terbatas.
-  </p>
-  <p style="margin-left:30px;"><small>Delight - Wujudkan karya luar biasa Anda!</small></p>
+<div class="content-container">
+  <div class="content-text">
+    <h5>Delight - Membawa Kreativitas Anda Menjadi Nyata!</h5>
+    <p>
+      Selamat datang di Delight, destinasi terbaik untuk kebutuhan benang Anda. Dengan koleksi benang berkualitas tinggi, kami memastikan setiap proyek kreatif Anda menjadi sukses. Temukan beragam pilihan benang yang indah dan tahan lama, dan biarkan imajinasi Anda berputar dengan bebas. Bergabunglah dengan kami dan jadilah bagian dari komunitas kreatif yang tak terbatas.
+    </p>
+    <p class="lead"><small>Delight - Wujudkan karya luar biasa Anda!</small></p>
+  </div>
 </div>
 
 @endsection

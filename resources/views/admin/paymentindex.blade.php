@@ -16,22 +16,22 @@
                 <thead>
                     <tr>
                      
-                        <th>User</th>
-                        <th>Order Date</th>
-                        <th>Products</th>
-                        <th>Payment Confirmation Image</th>
-                        <th>Total Amount</th>
-                        <th>Action</th>
-                        <th>Function</th>
+                        <th class="text-center">User</th>
+                        <th class="text-center">Order Date</th>
+                        <th class="text-center">Products</th>
+                        <th class="text-center">Payment Confirmation Image</th>
+                        <th class="text-center">Total Amount</th>
+                        <th class="text-center">Action</th>
+                        <th class="text-center">Function</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($orders as $order)
                     <tr>
                    
-                        <td>{{ $order->user->name }}</td>
-                        <td>{{ $order->order_date }}</td>
-                        <td>
+                        <td class="text-center">{{ $order->user->name }}</td>
+                        <td class="text-center">{{ $order->order_date }}</td>
+                        <td class="text-center">
                             <ul>
                             @foreach($order->orderItems as $item)
                                 <li>{{ $item->product->name }} (Quantity: {{ $item->quantity }})</li>
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td>
+                        <td class="text-center">
                             @php
                             $totalAmount = 0;
                             foreach($order->orderItems as $item) {
@@ -64,7 +64,7 @@
                             
                             Rp. {{ number_format($totalAmount, 0, ',', '.') }}
                         </td>
-                        <td>
+                        <td class="text-center">
                             <form method="POST" action="{{ route('admin.confirm', $order->id) }}">
                                 @csrf
                                 @method('PATCH')
@@ -81,7 +81,7 @@
                                 </select>
                             </form>
                         </td>
-                        <td>
+                        <td class="text-center">
                             <form action="{{ route('admin.destroy', $order->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')

@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
     {
         // Creating 5 new users with specific emails
         for ($i = 1; $i <= 5; $i++) {
-            User::create([
+            $user = User::create([
                 'name' => 'test' . $i,
                 'email' => 'test' . $i . '@gmail.com',
                 'email_verified_at' => now(),
@@ -27,6 +27,9 @@ class UserSeeder extends Seeder
                 'phone_number' => '081' . rand(100000000, 999999999),
                 'alamat' => Str::random(10),
             ]);
+
+            // Assign the role 'user' to the newly created user
+            $user->assignRole('user');
         }
     }
 }

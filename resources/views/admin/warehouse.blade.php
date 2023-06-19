@@ -28,7 +28,7 @@
                         <td class="text-center">{{ $product->quantity }}</td>
                         <td class="text-center">{{ $product->orderItems->sum('quantity') }}</td>
                         <td class="text-nowrap">Rp. {{ number_format($product->price, 0, ',', '.') }}</td>
-                        <td>{{ $product->description }}</td>
+                        <td class="text-center">{{ $product->description }}</td>
                         {{--       <img src="{{ asset('images/'.$order->payment_confirmation_image) }}" alt="Payment Confirmation" height="50" data-toggle="modal" data-target="#imageModal{{ $order->id }}"> --}}
                         <td class="text-center">
                             @if(strpos($product->image, 'http') !== false)

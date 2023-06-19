@@ -9,20 +9,20 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Nomor</th>
-                        <th>Tanggal Pemberian</th>
-                        <th>Produk</th>
-                        <th>Jumlah Total</th>
-                        <th>Status Barang Saat Ini</th>
+                        <th class="text-center">Nomor</th>
+                        <th class="text-center">Tanggal Pembelian</th>
+                        <th class="text-center">Produk</th>
+                        <th class="text-center">Jumlah Total</th>
+                        <th class="text-center">Status Barang Saat Ini</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($orders as $order)
                         <tr>
-                            <td>{{ $order->id }}</td>
-                            <td>{{ $order->created_at }}</td>
-                            <td>
-                                <ul>
+                            <td class="text-center">{{ $loop->iteration }}</td>
+                            <td class="text-center">{{ $order->created_at }}</td>
+                            <td class="text-center">
+                                <ul class="list-unstyled">
                                 @foreach($order->orderItems as $item)
                                     <li>
                                         @if(strpos($item->product->image, 'http') !== false)
@@ -35,7 +35,7 @@
                                 @endforeach
                                 </ul>
                             </td>
-                            <td>
+                            <td class="text-center">
                                 @php
                                 $totalAmount = 0;
                                 foreach($order->orderItems as $item) {
@@ -44,7 +44,7 @@
                                 @endphp
                                 Rp. {{ number_format($totalAmount, 0, ',', '.') }}
                             </td>
-                            <td>{{ ucfirst($order->status) }}</td>
+                            <td class="text-center">{{ ucfirst($order->status) }}</td>
                         </tr>
                     @endforeach
                 </tbody>

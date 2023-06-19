@@ -24,19 +24,21 @@ class AdminSeeder extends Seeder
         $admin->assignRole('admin');
 
         // Tokopedia User
-        User::create([
+        $tokopedia = User::create([
             'name' => 'tokopedia',
             'email' => 'tokopedia@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('password'), // Replace with the actual password
         ]);
+        $tokopedia->assignRole('user');
 
         // Offline Buyer User
-        User::create([
+        $offlinebuyer = User::create([
             'name' => 'offlineBuyer',
             'email' => 'offlineBuyer@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('password'), // Replace with the actual password
         ]);
+        $offlinebuyer->assignRole('user');
     }
 }

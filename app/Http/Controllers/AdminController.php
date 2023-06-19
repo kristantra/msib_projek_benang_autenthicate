@@ -17,9 +17,11 @@ class AdminController extends Controller
 {
     public function confirmPaymentIndex()
     {
-        $orders = Order::paginate(12); // retrieve all orders
+        $orders = Order::orderBy('id', 'desc')->paginate(12); // retrieve all orders, with newest id first
+
         return view('admin.paymentindex', compact('orders'));
     }
+
 
     public function confirmPayment(Request $request, $id)
     {

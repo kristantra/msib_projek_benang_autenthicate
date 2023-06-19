@@ -4,7 +4,11 @@
     
 
 <div class="container">
-   
+    <div class="jumbotron text-center mt-4">
+        <h2 class="display-6">Explore Our Delight Yarn Collection</h2>
+       
+        <hr class="my-4">
+    </div>
     <div class="col-md-12">
         @if (session('success'))
             <div class="alert alert-success">
@@ -21,7 +25,7 @@
     <div class="d-flex justify-content-end">
         <div class="dropdown mr-2">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="fabricDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                Fabric Types
+                Sortir Tipe Benang
             </button>
             <div class="dropdown-menu" aria-labelledby="fabricDropdown">
                 <a class="dropdown-item" href="{{ route('products.index') }}">

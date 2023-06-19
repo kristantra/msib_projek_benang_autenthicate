@@ -158,9 +158,9 @@ class CartController extends Controller
 
         // Redirect back to the checkout page with a success message
         if (session('cart') === null || count(session('cart')) == 0) {
-            return redirect()->route('products.index')->with('success', 'Order confirmed!');
+            return redirect()->route('products.index')->with('success',  'Your order has been confirmed! You can now check your order status in the "My Orders" section.');
         }
-        return redirect()->route('checkout')->with('success', 'Order confirmed!');
+        return redirect()->route('checkout')->with('success', 'Your order has been confirmed! You can now check your order status in the "My Orders" section.');
     }
 
 

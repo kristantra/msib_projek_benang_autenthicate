@@ -38,9 +38,9 @@ class ProfileController extends Controller
 
         // return Redirect::route('profile.edit')->with('status', 'profile-updated');
         if (url()->previous() == route('profile.edit')) {
-            return Redirect::route('profile.edit')->with('status', 'profile-updated');
+            return Redirect::route('profile.edit')->with('status', 'profile successfully updated');
         } else {
-            return Redirect::intended('checkout')->with('status', 'profile-updated');
+            return Redirect::intended('checkout')->with('status', 'profile successfully updated');
         }
     }
 
